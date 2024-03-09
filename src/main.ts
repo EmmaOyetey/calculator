@@ -6,6 +6,7 @@ import "./style.scss";
 
 const button = document.querySelectorAll<HTMLButtonElement>(".button");
 const digit = document.querySelectorAll<HTMLButtonElement>(".digit");
+const operation  = document.querySelectorAll<HTMLButtonElement>(".operation");
 
 //Add Query Selectors and return type HTML 
 //to know what button has been clicked - Get and return individual digit elements
@@ -154,29 +155,121 @@ if (digitNineButton) {
     digitNineButton.addEventListener('click', handleDigitNineClick); 
     };
 
+//
+
+//Declaring Arrays
+let enteredDigit:number [] = [];  // Array to store entered digits
+let numberInCalculation:number[] =[];
+let operatorsInCalculation:string[] =[];
+
+// handle user clicks an operation button
+//Concatenate digits move concatinated number t0 array numberInCalculation
+//push operator into operations in calculation depending on operator chosen
 
 
+const multiply = (event: Event): void => {
+let concatenatedNumber: number = 0; 
+for (let index = 0; index < enteredDigit.length; index++) {
+       concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
+   }
+numberInCalculation.push(concatenatedNumber);
+operatorsInCalculation.push("x");
+enteredDigit=[];    
+console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
+};
 
-//handle user clicks an operation button
-//const handleMultClick = (event: Event) : void => { 
 
+const divide = (event: Event): void => {
+    let concatenatedNumber: number = 0; 
+    for (let index = 0; index < enteredDigit.length; index++) {
+           concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
+       }
+    numberInCalculation.push(concatenatedNumber);
+    operatorsInCalculation.push("/");
+    enteredDigit=[];    
+    console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
     
-}
+    };
 
-//maths functions
-//let enteredDigit:number [] = [];  // Array to store entered digits
-//let allEnteredDigits: number[] = [];
-//let numberInCalculation:number[] =[];
+    const add = (event: Event): void => {
+        let concatenatedNumber: number = 0; 
+        for (let index = 0; index < enteredDigit.length; index++) {
+               concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
+           }
+        numberInCalculation.push(concatenatedNumber);
+        operatorsInCalculation.push("+");
+        enteredDigit=[];    
+        console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
+        
+        };
+
+        const subtract = (event: Event): void => {
+            let concatenatedNumber: number = 0; 
+            for (let index = 0; index < enteredDigit.length; index++) {
+                   concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
+               }
+            numberInCalculation.push(concatenatedNumber);
+            operatorsInCalculation.push("-");
+            enteredDigit=[];    
+            console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
+            
+            };
+    
+
+    //    const multiply =(event: Event):void => {
+    //       let answer:number = numberInCalculation [0];
+    //        for (let index = 0; index < enteredDigit.length; index++) {
+    //            if ( operatorsInCalculation = "+" {answer += answer + numberInCalculation[index];
+    //       }
+    //    }
+
+    //    const equals =(event: Event):void => {
+    //       let answer:number = numberInCalculation [0];
+    //        for (let index = 0; index < enteredDigit.length; index++) {
+    //           if ( operatorsInCalculation = "+" {answer += answer + numberInCalculation[index];
+    //        }
+    //    }
+
+if (multButton) {
+   multButton.addEventListener('click', multiply); 
+   };
 
 
-// Concatenate digits to form a larger number
-//const concatenateNumber:number = push
+if(DivButton) {
+        DivButton.addEventListener("click", divide);
+    };
 
-//let concatenatedNumber:number = 0; // Initialize numberInCalculation variable before the loop
+if(addButton) {
+        addButton.addEventListener("click", add);
+    };
 
-//for (let index = 0; index < enteredDigit.length; index++) {
- //   concatenatedNumber += enteredDigit[index] * Math.pow(10, index);
-}
+if(subButton) {
+        subButton.addEventListener("click", subtract);
+};
+
+//if(equalsButton) {
+//    equalsButton.addEventListener("click" , equals); 
+//}
+
+//To avoid repetition of the concatenation need to incorporate;
+//const concatenateNumber = (enteredDigit: number[]): number => {
+//    let concatenatedNumber: number = 0; // Initialize concatenatedNumber variable before the loop
+//    for (let index = 0; index < enteredDigit.length; index++) {
+//       concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
+//   }
+//   return concatenatedNumber;
+//};
+
+//if (operation) {
+ //operation.addEventListener('click', registerNumber); 
+
+
+
+
+
+
+
+
 
 
 
