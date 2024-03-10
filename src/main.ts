@@ -30,12 +30,15 @@ const addButton = document.querySelector<HTMLButtonElement>(".operation__add");
 const subButton = document.querySelector<HTMLButtonElement>(".operation__sub");
 
 const equalsButton = document.querySelector(".equals");
+
 const posToNegButton = document.querySelector(".convert__posNeg");
 const decButton = document.querySelector(".convert__dec");
 const percentButton = document.querySelector(".convert__percent");
 const clearButton = document.querySelector(".clear");
 
-
+const outputAnswer = document.getElementById("answer");
+const outputEnteredDigits = document.getElementById("entered-digits");
+const outputCalcInProess = document.getElementById("calc-in-progress");
 // manage the event null is returned from the query selector
 //use non-null assertion ! and throw an error 
 
@@ -248,6 +251,7 @@ const divide = (event: Event): void => {
                     }
                 }
                 console.log (numberInCalculation, operatorsInCalculation, enteredDigit, answer);
+                if(outputAnswer) {outputAnswer.textContent = answer.toString() };
             };
 
     //    const multiply =(event: Event):void => {
@@ -286,6 +290,8 @@ if(subButton) {
 if(equalsButton) {
   equalsButton.addEventListener("click" , equals); 
 }
+
+
 
 //To avoid repetition of the concatenation could incorporate seperate function for concatenate;
 //const concatenateNumber = (enteredDigit: number[]): number => {
