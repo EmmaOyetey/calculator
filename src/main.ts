@@ -87,51 +87,61 @@ if (!digitOneButton) {
 const handleDigitZeroClick = (event: Event): void => {
     enteredDigit.push(0); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitOneClick = (event: Event): void => {
     enteredDigit.push(1); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitTwoClick = (event: Event): void => {
     enteredDigit.push(2); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitThreeClick = (event: Event): void => {
     enteredDigit.push(3); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitFourClick = (event: Event): void => {
     enteredDigit.push(4); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitFiveClick = (event: Event): void => {
     enteredDigit.push(5); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitSixClick = (event: Event): void => {
     enteredDigit.push(6); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitSevenClick = (event: Event): void => {
     enteredDigit.push(7); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitEightClick = (event: Event): void => {
     enteredDigit.push(8); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 const handleDigitNineClick = (event: Event): void => {
     enteredDigit.push(9); // Push the number 2 into enteredDigits array
     console.log(enteredDigit); // Output the updated array to console (optional)
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 }
 
 //add event listeners to each individual digit button for the event they are clicked
@@ -173,6 +183,7 @@ if (digitNineButton) {
 let enteredDigit:number [] = [];  // Array to store entered digits
 let numberInCalculation:number[] =[];
 let operatorsInCalculation:string[] =[];
+let calculation:(number|string)[] = [];
 
 // handle user clicks an operation button
 //Concatenate digits move concatinated number t0 array numberInCalculation
@@ -186,8 +197,12 @@ for (let index = 0; index < enteredDigit.length; index++) {
    }
 numberInCalculation.push(concatenatedNumber);
 operatorsInCalculation.push("x");
+calculation.push(concatenatedNumber);
+calculation.push("x");
 enteredDigit=[];    
 console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
+if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
+if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 };
 
 
@@ -198,9 +213,13 @@ const divide = (event: Event): void => {
        }
     numberInCalculation.push(concatenatedNumber);
     operatorsInCalculation.push("/");
+    calculation.push(concatenatedNumber);
+    calculation.push("/");
     enteredDigit=[];    
     console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
-    
+    if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
+    if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
+    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
     };
 
     const add = (event: Event): void => {
@@ -210,9 +229,14 @@ const divide = (event: Event): void => {
            }
         numberInCalculation.push(concatenatedNumber);
         operatorsInCalculation.push("+");
-        enteredDigit=[];    
+        calculation.push(concatenatedNumber);
+        calculation.push("+");
+        enteredDigit=[]; 
+
         console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
-        
+        if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
+        if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
+        if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
         };
 
         const subtract = (event: Event): void => {
@@ -222,9 +246,13 @@ const divide = (event: Event): void => {
                }
             numberInCalculation.push(concatenatedNumber);
             operatorsInCalculation.push("-");
+            calculation.push(concatenatedNumber);
+            calculation.push("-")
             enteredDigit=[];    
             console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
-            
+            if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
+            if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
+            if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
             };
 
         const equals = (event: Event): void => {
@@ -233,9 +261,10 @@ const divide = (event: Event): void => {
                    concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
                }
             numberInCalculation.push(concatenatedNumber);
-
+            calculation.push(concatenatedNumber);
+            if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
             enteredDigit=[]; 
-
+            if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
             let answer: number = numberInCalculation[0];
                 for (let index = 1; index < numberInCalculation.length; index++) {
                     if (operatorsInCalculation[index - 1] === "+") {
