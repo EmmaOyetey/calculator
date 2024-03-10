@@ -264,7 +264,7 @@ const divide = (event: Event): void => {
             calculation.push(concatenatedNumber);
             if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
             enteredDigit=[]; 
-            if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
+            if(outputEnteredDigits) {outputEnteredDigits.textContent = " = "};
             let answer: number = numberInCalculation[0];
                 for (let index = 1; index < numberInCalculation.length; index++) {
                     if (operatorsInCalculation[index - 1] === "+") {
