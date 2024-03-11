@@ -21,7 +21,25 @@ const DivButton = document.querySelector<HTMLButtonElement>(".operation__div");
 const addButton = document.querySelector<HTMLButtonElement>(".operation__add");
 const subButton = document.querySelector<HTMLButtonElement>(".operation__sub");
 
+if (!button) {
+    throw new Error ("issue with buttons");
+    }
+if (!digits) {
+    throw new Error ("issue with digit button");
+    }
+
+if (!convert) {
+    throw new Error ("issue with covert button")
+}
+
 const equalsButton = document.querySelector(".equals");
+
+if (!equal){
+    throw new Error ("issue with covert button")
+}
+
+
+
 
 const posToNegButton = document.querySelector(".convert__posNeg");
 const decButton = document.querySelector(".convert__dec");
@@ -34,20 +52,8 @@ const outputCalcInProess = document.getElementById("calc-in-progress");
 // manage the event null is returned from the query selector
 //use non-null assertion ! and throw an error 
 
-if (!button) {
-    throw new Error ("issue with buttons");
-    }
-if (!digits) {
-    throw new Error ("issue with digit button");
-    }
 
-if (!convert) {
-    throw new Error ("issue with covert button")
-}
 
-if (!equal){
-    throw new Error ("issue with covert button")
-}
 
 
 //create function handleButtonStyleChange that changes button style
@@ -85,21 +91,19 @@ if (!equal){
     };
 
     digits.forEach( (digit) => {
-      digit.addEventListener('click', handleDigits);
-
-}) ; 
-
+      digit.addEventListener('click', handleDigits);        
+    }) ; 
 
 
-
-
-//
 
 //Declaring Arrays
 let enteredDigits:number [] = [];  // Array to store entered digits
 let numberInCalculation:number[] =[]; // array to store concatenated number in operation
 let operatorsInCalculation:string[] =[]; //array to staore operators in calcualtion
-let calculation:(number|string)[] = []; //array to combine numbers in calc and operators in calculation
+let calculation:(number|string)[] = [];
+
+
+ //array to combine numbers in calc and operators in calculation
 //let isADecimal = false;
 
  
@@ -112,18 +116,18 @@ let calculation:(number|string)[] = []; //array to combine numbers in calc and o
 //update output displays ; outputenteredDigits and outputcalculation in process
 
 
+let isADecimal = false;
+let decimalPlace: number = 0; // Define decimalPlace outside the functions
 
-//let decimalPlace: number = 0; // Define decimalPlace outside the functions
+const handleDecimals = (event: Event): void => {
+ isADecimal = true; // Update isADecimal flag
+ decimalPlace = enteredDigits.length; // Update decimalPlace
+ console.log("its a decimal! with" + decimalPlace )
+};
 
-//const handleDecimals = (event: Event): void => {
-//isADecimal = true; // Update isADecimal flag
-//  decimalPlace = enteredDigit.length; // Update decimalPlace
-//   console.log("its a decimal! with" + decimalPlace )
-//};
-
-//if (decButton) {
- //   decButton.addEventListener("click", handleDecimals);
-//}
+if (decButton) {
+    decButton.addEventListener("click", handleDecimals);
+}
 
 
 
@@ -149,14 +153,26 @@ const handleConcatenation = (enteredDigits: number[]): number => {
     return concatenatedNumber;
 };
 
-//const handlePercentage =(event : Event) :void => {
- //   let convertedNumber : number = handleConcatenation() /100;
- //   console.log (`${convertedNumber}`);
-//};
 
-//if (percentButton) {
- //   percentButton.addEventListener('click', handlePercentage); 
- //   };
+
+const handlePercentageConversion =(event : Event) :void => {
+    let concatenatedNumber = handleConcatenation(enteredDigits);
+    let convertedPercentage: number  = concatenatedNumber /100;
+    enteredDigits =[convertedPercentage]; 
+    console.log(enteredDigits);
+    if (outputEnteredDigits) {
+        outputEnteredDigits.textContent = enteredDigits.join(" ");
+    }
+};
+
+if (percentButton) {
+   percentButton.addEventListener('click', handlePercentageConversion); 
+   };
+
+const handlePostoNegConversion = (event : Event) :void => {
+    let concatenatedNumber = handleConcatenation(enteredDigits);
+    let converted 
+} 
 
 const handleMultiplication = (event: Event): void => {
     let concatenatedNumber: number = handleConcatenation(enteredDigits); // Call handleConcatenation function
@@ -210,7 +226,6 @@ const handleDivision = (event: Event): void => {
         calculation.push(concatenatedNumber);
         calculation.push("+");
         enteredDigits=[]; 
-
         console.log(numberInCalculation, operatorsInCalculation, enteredDigits);
         if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
         if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigits.join(" ")};
