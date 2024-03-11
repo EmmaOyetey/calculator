@@ -5,24 +5,16 @@ import "./style.scss";
 //let ts know the kind of element we are trying to get -  add the return type of the method <HTMLstyleElement>
 
 const button = document.querySelectorAll<HTMLButtonElement>(".button");
-const digit = document.querySelectorAll<HTMLButtonElement>(".digit");
+const digits = document.querySelectorAll<HTMLButtonElement>(".digit");
 const convert  = document.querySelectorAll<HTMLButtonElement>(".convert");
 const equal = document.querySelectorAll<HTMLButtonElement>(".equals");
+
+console.log(digits);
 
 //Add Query Selectors and return type HTML 
 //to know what button has been clicked - Get and return individual digit elements
 //let ts know the kind of element we are trying to get -  add the return type of the method <HTMLButtonElement>
 
-const digitOneButton = document.querySelector<HTMLButtonElement>(".digit__1");
-const digitTwoButton = document.querySelector<HTMLButtonElement>(".digit__2");
-const digitThreeButton = document.querySelector<HTMLButtonElement>(".digit__3");
-const digitFourButton = document.querySelector<HTMLButtonElement>(".digit__4");
-const digitFiveButton = document.querySelector<HTMLButtonElement>(".digit__5");
-const digitSixButton = document.querySelector<HTMLButtonElement>(".digit__6");
-const digitSevenButton = document.querySelector<HTMLButtonElement>(".digit__7");
-const digitEightButton = document.querySelector<HTMLButtonElement>(".digit__8");
-const digitNineButton = document.querySelector<HTMLButtonElement>(".digit__9");
-const digitZeroButton = document.querySelector<HTMLButtonElement>(".digit__0");
 
 const multButton = document.querySelector<HTMLButtonElement>(".operation__mult");
 const DivButton = document.querySelector<HTMLButtonElement>(".operation__div");
@@ -45,7 +37,7 @@ const outputCalcInProess = document.getElementById("calc-in-progress");
 if (!button) {
     throw new Error ("issue with buttons");
     }
-if (!digit) {
+if (!digits) {
     throw new Error ("issue with digit button");
     }
 
@@ -57,9 +49,6 @@ if (!equal){
     throw new Error ("issue with covert button")
 }
 
-if (!digitOneButton) {
-    throw new Error ("issue with digit1");     // do we need to be this specific? and add for each individual button?
-    }
 
 //create function handleButtonStyleChange that changes button style
 //create event listener - to run code (/ function) when specified event happens 
@@ -84,113 +73,43 @@ if (!digitOneButton) {
     
 
 // Function to handle button 2 click event
-const handleDigitZeroClick = (event: Event): void => {
-    enteredDigit.push(0); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitOneClick = (event: Event): void => {
-    enteredDigit.push(1); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitTwoClick = (event: Event): void => {
-    enteredDigit.push(2); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitThreeClick = (event: Event): void => {
-    enteredDigit.push(3); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitFourClick = (event: Event): void => {
-    enteredDigit.push(4); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitFiveClick = (event: Event): void => {
-    enteredDigit.push(5); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitSixClick = (event: Event): void => {
-    enteredDigit.push(6); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitSevenClick = (event: Event): void => {
-    enteredDigit.push(7); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitEightClick = (event: Event): void => {
-    enteredDigit.push(8); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
-const handleDigitNineClick = (event: Event): void => {
-    enteredDigit.push(9); // Push the number 2 into enteredDigits array
-    console.log(enteredDigit); // Output the updated array to console (optional)
-    if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
-}
-
 //add event listeners to each individual digit button for the event they are clicked
-if (digitZeroButton) {
-    digitZeroButton.addEventListener('click', handleDigitZeroClick); 
+
+    const handleDigits = (event: Event): void => {
+        const thisDigit = parseInt((event.currentTarget as HTMLButtonElement).value, 10); //ensure that thisDigit is recognised a number not a string .value is accessessing one of the proporties (value) in the array (node list) of digits
+        enteredDigit.push(thisDigit); // Push the number into enteredDigits array
+        console.log(enteredDigit); // Output the updated array to console 
+        if (outputEnteredDigits) {
+            outputEnteredDigits.textContent = enteredDigit.join(" ");
+        }
     };
 
-if (digitOneButton) {
-    digitOneButton.addEventListener('click', handleDigitOneClick); 
-    };
-if (digitTwoButton) {
-    digitTwoButton.addEventListener('click', handleDigitTwoClick); 
-    };
-if (digitThreeButton) {   
-    digitThreeButton.addEventListener('click', handleDigitThreeClick); 
-    };
-if (digitFourButton) {
-    digitFourButton.addEventListener('click', handleDigitFourClick); 
-    };
-if (digitFiveButton) {
-    digitFiveButton.addEventListener('click', handleDigitFiveClick); 
-    };
-if (digitSixButton) {
-    digitSixButton.addEventListener('click', handleDigitSixClick); 
-    };
-if (digitSevenButton) {
-    digitSevenButton.addEventListener('click', handleDigitSevenClick); 
-    };
-if (digitEightButton) {
-    digitEightButton.addEventListener('click', handleDigitEightClick); 
-    };
-if (digitNineButton) {
-    digitNineButton.addEventListener('click', handleDigitNineClick); 
-    };
+    digits.forEach( (digit) => {
+      digit.addEventListener('click', handleDigits);
+
+}) ; 
+
+
+
+
 
 //
 
 //Declaring Arrays
 let enteredDigit:number [] = [];  // Array to store entered digits
-let numberInCalculation:number[] =[];
-let operatorsInCalculation:string[] =[];
-let calculation:(number|string)[] = [];
+let numberInCalculation:number[] =[]; // array to store concatenated number in operation
+let operatorsInCalculation:string[] =[]; //array to staore operators in calcualtion
+let calculation:(number|string)[] = []; //array to combine numbers in calc and operators in calculation
 
-// handle user clicks an operation button
-//Concatenate digits move concatinated number t0 array numberInCalculation
+// handle user clicks an operation button + - X /
+//Concatenate digits 
+//move concatinated number t0 array numberInCalculation
 //push operator into operations in calculation depending on operator chosen
+//clear enteredDigit array
+//update output displays ; outputenteredDigits and outputcalculation in process
 
 
-const multiply = (event: Event): void => {
+const handleMultiplication = (event: Event): void => {
 let concatenatedNumber: number = 0; 
 for (let index = 0; index < enteredDigit.length; index++) {
        concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
@@ -205,8 +124,13 @@ if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") }
 if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
 };
 
+if (multButton) {
+    multButton.addEventListener('click', handleMultiplication); 
+    };
+ 
 
-const divide = (event: Event): void => {
+
+const handleDivision = (event: Event): void => {
     let concatenatedNumber: number = 0; 
     for (let index = 0; index < enteredDigit.length; index++) {
            concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
@@ -218,11 +142,15 @@ const divide = (event: Event): void => {
     enteredDigit=[];    
     console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
     if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
-    if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
     if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
     };
 
-    const add = (event: Event): void => {
+    if(DivButton) {
+        DivButton.addEventListener("click", handleDivision);
+    };
+
+
+    const handleAddition = (event: Event): void => {
         let concatenatedNumber: number = 0; 
         for (let index = 0; index < enteredDigit.length; index++) {
                concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
@@ -235,11 +163,14 @@ const divide = (event: Event): void => {
 
         console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
         if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
-        if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
         if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
         };
 
-        const subtract = (event: Event): void => {
+        if(addButton) {
+            addButton.addEventListener("click", handleAddition);
+        };
+
+        const handleSubtraction = (event: Event): void => {
             let concatenatedNumber: number = 0; 
             for (let index = 0; index < enteredDigit.length; index++) {
                    concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
@@ -251,11 +182,14 @@ const divide = (event: Event): void => {
             enteredDigit=[];    
             console.log(numberInCalculation, operatorsInCalculation, enteredDigit);
             if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
-            if(outputCalcInProess) {outputCalcInProess.textContent = calculation.join(" ") };
             if(outputEnteredDigits) {outputEnteredDigits.textContent = enteredDigit.join(" ")};
             };
 
-        const equals = (event: Event): void => {
+            if(subButton) {
+                subButton.addEventListener("click", handleSubtraction);
+        };
+
+        const handleEquals = (event: Event): void => {
             let concatenatedNumber: number = 0; 
             for (let index = 0; index < enteredDigit.length; index++) {
                    concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
@@ -283,6 +217,14 @@ const divide = (event: Event): void => {
                 if(outputAnswer) {outputAnswer.textContent = answer.toString() };
             };
 
+            if(equalsButton) {
+                equalsButton.addEventListener("click" , handleEquals); 
+              }
+
+   //         const  handleDecimal = (event : Event): void => {
+   //             let decimal : number = enteredDigit.length;
+    //       }
+
     //    const multiply =(event: Event):void => {
     //       let answer:number = numberInCalculation [0];
     //        for (let index = 0; index < enteredDigit.length; index++) {
@@ -299,28 +241,18 @@ const divide = (event: Event): void => {
 //                      else if (operatorsInCalculation = "x") { answer += answer x numberInCalculation[index]};
     //    }
 
-if (multButton) {
-   multButton.addEventListener('click', multiply); 
-   };
 
 
-if(DivButton) {
-        DivButton.addEventListener("click", divide);
-    };
-
-if(addButton) {
-        addButton.addEventListener("click", add);
-    };
-
-if(subButton) {
-        subButton.addEventListener("click", subtract);
-};
-
-if(equalsButton) {
-  equalsButton.addEventListener("click" , equals); 
-}
 
 
+
+
+
+
+
+//if(decButton) {
+//    decButton.addEventListener("click", handleDecimal);
+//}
 
 //To avoid repetition of the concatenation could incorporate seperate function for concatenate;
 //const concatenateNumber = (enteredDigit: number[]): number => {
