@@ -81,21 +81,20 @@ body {
   cursor: pointer;
   transition: border-color 0.25s;
   font-family: $font-family;
-  
 
-
-  
+//  &:active: {
+ //   background-color: darkorange;
+ // }
 }
-
 .output {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.4em 1.2em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s; //deals with click coor change
-  margin-bottom: 10px; // Adjust as needed
+  padding: 0.4em 0.9em;
+  font-weight: 700;
+  font-family: $font-family;
+  font-size: larger;
+
+
   
   // Reduce font size for longer numbers
   @for $i from 1 through $maxDigits {

@@ -15,7 +15,7 @@
   <body>
     <div id="app">
       <script type="module" src="/src/main.ts"></script>
-
+<!--Calculator Displays-->
       <div class="display-container">
         <div class="output" id="calc-in-progress"></div>
         <div class="output" id="entered-digits">Get Calculating!</div>
@@ -23,6 +23,7 @@
       </div>
 
       <div class="buttons-container">
+<!--Digit Buttons-->        
         <button class="button digit digit__9" value="9">
           <i class="fa-solid fa-9"></i>
         </button>
@@ -53,8 +54,7 @@
         <button class="button digit digit__0" value="0">
           <i class="fa-solid fa-0"></i>
         </button>
-        <button class="button clear">C</button>
-
+<!--Operation buttons x / + - -->
         <button class="button operation operation__mult" value="x">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -67,13 +67,15 @@
         <button class="button operation operation__sub" value="-">
           <i class="fa-solid fa-minus"></i>
         </button>
-
+<!--Conversion buttons +- % dec-->
         <button class="button convert convert__posNeg">-/+</button>
         <button class="button convert convert__dec">.</button>
         <button class="button convert convert__percent">
           <i class="fa-solid fa-percent"></i>
         </button>
-
+<!--Clear button-->
+        <button class="button clear">C</button>
+<!--Calcution = button-->
         <button class="button equals">
           <i class="fa-solid fa-equals"></i>
         </button>
