@@ -1,82 +1,10 @@
-.button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: orange;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-.display-container {
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+body {
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  max-width: 100%;
-  background-color: lightslategrey;
-}
-
-.output {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.4em 1.2em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  margin-bottom: 10px;
-}
-@media (min-width: 90vw) {
-  .output .display-1 {
-    font-size: 2em;
-  }
-}
-@media (min-width: 45vw) {
-  .output .display-2 {
-    font-size: 1em;
-  }
-}
-@media (min-width: 30vw) {
-  .output .display-3 {
-    font-size: 0.6666666667em;
-  }
-}
-@media (min-width: 22.5vw) {
-  .output .display-4 {
-    font-size: 0.5em;
-  }
-}
-@media (min-width: 18vw) {
-  .output .display-5 {
-    font-size: 0.4em;
-  }
-}
-@media (min-width: 15vw) {
-  .output .display-6 {
-    font-size: 0.3333333333em;
-  }
-}
-@media (min-width: 12.8571428571vw) {
-  .output .display-7 {
-    font-size: 0.2857142857em;
-  }
-}
-@media (min-width: 11.25vw) {
-  .output .display-8 {
-    font-size: 0.25em;
-  }
-}
-@media (min-width: 10vw) {
-  .output .display-9 {
-    font-size: 0.2222222222em;
-  }
-}
-@media (min-width: 9vw) {
-  .output .display-10 {
-    font-size: 0.2em;
-  }
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 #app {
@@ -84,14 +12,23 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: black;
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: 500;
 }
 
-.body {
-  margin: 0;
+.display-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: darkkhaki;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 .buttons-container {
@@ -159,4 +96,77 @@
 }
 .buttons-container .equals {
   grid-area: equals;
+}
+
+.button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: orange;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.output {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.4em 1.2em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin-bottom: 10px;
+}
+@media (min-width: 90vw) {
+  .output .display-1 {
+    font-size: 2em;
+  }
+}
+@media (min-width: 45vw) {
+  .output .display-2 {
+    font-size: 1em;
+  }
+}
+@media (min-width: 30vw) {
+  .output .display-3 {
+    font-size: 0.6666666667em;
+  }
+}
+@media (min-width: 22.5vw) {
+  .output .display-4 {
+    font-size: 0.5em;
+  }
+}
+@media (min-width: 18vw) {
+  .output .display-5 {
+    font-size: 0.4em;
+  }
+}
+@media (min-width: 15vw) {
+  .output .display-6 {
+    font-size: 0.3333333333em;
+  }
+}
+@media (min-width: 12.8571428571vw) {
+  .output .display-7 {
+    font-size: 0.2857142857em;
+  }
+}
+@media (min-width: 11.25vw) {
+  .output .display-8 {
+    font-size: 0.25em;
+  }
+}
+@media (min-width: 10vw) {
+  .output .display-9 {
+    font-size: 0.2222222222em;
+  }
+}
+@media (min-width: 9vw) {
+  .output .display-10 {
+    font-size: 0.2em;
+  }
 }/*# sourceMappingURL=style.css.map */
