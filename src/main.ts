@@ -33,11 +33,14 @@ if (!digits ) {
 //    throw new Error ("issue with operator button")
 //};
 if (!equalsButton){
-    throw new Error ("issue with covert button")
+    throw new Error ("issue with covert button");
 };
 if (!outputAnswer || !outputEnteredDigits || !outputCalcInProgress){
-    throw new Error ("issue with display output")
+    throw new Error ("issue with display output");
 };
+if(!posToNegButton || !decButton) {
+    throw new Error ("issue with converts in development");
+}
 
 //function handleButtonStyleChange that changes button style on click
 const handleButtonStyleChange = (event: Event): void => {
