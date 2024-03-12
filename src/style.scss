@@ -11,109 +11,93 @@
   
 }
 
+
+
+
+.display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  max-width: 100%;// maximum width to prevent horizontal overflow
+  background-color: lightslategrey;
+}
+
+  $maxDigits: 10;
+  $baseFontSize: 2em;// Set the base font size
+ 
+
+
 .output {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 0.4em 1.2em;
   font-weight: 500;
   font-family: inherit;
-  background-color: lightslategrey;
+  
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s; //deals with click coor change
+  margin-bottom: 10px; // Adjust as needed
+  
+  // Reduce font size for longer numbers
+  @for $i from 1 through $maxDigits {
+    $maxWidth: calc(90vw / $i); // Adjust the divisor as needed
+    @media (min-width: $maxWidth) {
+      .display-#{$i} {
+        font-size: calc($baseFontSize / $i); // Reduce font size proportionally
+      }
+    }
+  }
 }
+
+  #app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  
 
 .body {
-  display: flex;
-  flex-direction: column;
-}
-
-
-
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+
+  .buttons-container {
+    max-width: 100%;
+    display: grid;
+    grid-gap: 5px; 
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(5, 1fr); 
+    grid-template-areas:
+        "clear posNeg percent div"
+        "digit__7 digit__8 digit__9 mult"
+        "digit__4 digit__5 digit__6 addsign"
+        "digit__1 digit__2 digit__3 subsign"
+        "digit__0 digit__0 decPoint equals"; 
+
+    /* Assign grid areas */
+    .digit__9 { grid-area: digit__9; }
+    .digit__8 { grid-area: digit__8; }
+    .digit__7 { grid-area: digit__7; }
+    .digit__6 { grid-area: digit__6; }
+    .digit__5 { grid-area: digit__5; }
+    .digit__4 { grid-area: digit__4; }
+    .digit__3 { grid-area: digit__3; }
+    .digit__2 { grid-area: digit__2; }
+    .digit__1 { grid-area: digit__1; }
+    .digit__0 { grid-area: digit__0; }
+    .clear {grid-area: clear}
+    .convert__posNeg {grid-area :posNeg}
+    .convert__percent {grid-area :percent}
+    .operation__div {grid-area:div}
+    .operation__mult {grid-area :mult}
+    .operation__add {grid-area:addsign }
+    .operation__sub {grid-area:subsign}
+    .convert__dec {grid-area:decPoint}
+    .equals {grid-area:equals}
+
 }
