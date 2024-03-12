@@ -7,12 +7,12 @@ import "./style.scss";
 const button = document.querySelectorAll<HTMLButtonElement>(".button");
 const digits = document.querySelectorAll<HTMLButtonElement>(".digit");
 const operations = document.querySelectorAll<HTMLButtonElement>(".operation");
-//const convert  = document.querySelectorAll<HTMLButtonElement>(".convert");
+const convert  = document.querySelectorAll<HTMLButtonElement>(".convert");
 
 const equalsButton = document.querySelector(".equals");
-//Conversion buttons
-//const posToNegButton = document.querySelector(".convert__posNeg");
-//const decButton = document.querySelector(".convert__dec");
+//Conversion buttons - under development. see commented out code at the bottom
+const posToNegButton = document.querySelector(".convert__posNeg");
+const decButton = document.querySelector(".convert__dec");
 const percentButton = document.querySelector(".convert__percent");
 
 
@@ -105,8 +105,6 @@ if (percentButton) {
    percentButton.addEventListener('click', handlePercentageConversion); 
    };
 
-   console.log(operations);
-
 // function to handle operation on the event of a click
 const handleOperators = (event: Event): void => {
     const thisOperator = (event.currentTarget as HTMLButtonElement).value; 
@@ -150,13 +148,17 @@ const handleEquals = (event: Event): void => {
             }
         }
     console.log (numberInCalculation, operatorsInCalculation, enteredDigits, answer);
-    if(outputAnswer) {outputAnswer.textContent = answer.toString() };
+    outputAnswer.textContent = answer.toString();
+    enteredDigits = [] ;
+    numberInCalculation = [];
+    operatorsInCalculation = [] ;
+    calculation = [] ;
     };
 
 //event listener to trigger the handling of calculating the sum on the event = is clicked
 equalsButton.addEventListener("click" , handleEquals); 
       
-//function to clear display inputs
+//function to handle clearing display inputs
 
 const handleClearingInputs = (event : Event) : void => {
 
@@ -165,13 +167,24 @@ const handleClearingInputs = (event : Event) : void => {
     operatorsInCalculation = [] ;
     calculation = [] ;
     outputCalcInProgress.textContent = "";
-    outputEnteredDigits.textContent = "";
+    outputEnteredDigits.textContent = "Get Calculating!";
     outputAnswer.textContent = "";
 }    
 
 clearButton?.addEventListener("click" , handleClearingInputs);
 
+const handleUnderDevelopment = (event :Event) : void => {
+    outputEnteredDigits.textContent = "Coming Soon!";
+    outputCalcInProgress.textContent = "";
+    enteredDigits = [] ;
+    numberInCalculation = [];
+    operatorsInCalculation = [] ;
+    calculation = [] ;    
+    outputAnswer.textContent = "";
+};
 
+posToNegButton.addEventListener("click", handleUnderDevelopment);
+decButton.addEventListener("click", handleUnderDevelopment);
 
 //if(decButton) {
 //    decButton.addEventListener("click", handleDecimal);

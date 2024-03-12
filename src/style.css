@@ -98,7 +98,7 @@ body {
   grid-area: equals;
 }
 
-.button {
+.operation, .convert, .clear, .equals {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -109,6 +109,23 @@ body {
   cursor: pointer;
   transition: border-color 0.25s;
   font-family: Lato, sans-serif;
+}
+
+.digit {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 700;
+  font-family: inherit;
+  background-color: rgb(250, 233, 201);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  font-family: Lato, sans-serif;
+}
+
+.digit {
+  background-color: digitButton-color;
 }
 
 .output {
