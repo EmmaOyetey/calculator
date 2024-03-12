@@ -101,57 +101,35 @@ let enteredDigits:number [] = [];  // Array to store entered digits
 let numberInCalculation:number[] =[]; // array to store concatenated number in operation
 let operatorsInCalculation:string[] =[]; //array to staore operators in calcualtion
 let calculation:(number|string)[] = [];
+let decimal:(number)[] =[];
 
 
- //array to combine numbers in calc and operators in calculation
-//let isADecimal = false;
+
+
+
 
  
-
-// handle user clicks an operation button + - X /
-//Concatenate digits 
-//move concatinated number t0 array numberInCalculation
-//push operator into operations in calculation depending on operator chosen
-//clear enteredDigit array
-//update output displays ; outputenteredDigits and outputcalculation in process
-
-
-let isADecimal = false;
-let decimalPlace: number = 0; // Define decimalPlace outside the functions
-
-const handleDecimals = (event: Event): void => {
- isADecimal = true; // Update isADecimal flag
- decimalPlace = enteredDigits.length; // Update decimalPlace
- console.log("its a decimal! with" + decimalPlace )
-};
-
-if (decButton) {
-    decButton.addEventListener("click", handleDecimals);
-}
-
-
-
-//const handleConcatenation = (): number => {
- //   let concatenatedNumber = 0;
- //   if (isADecimal) {
- //       for (let index = decimalPlace; index < enteredDigit.length; index++) {
-  //          concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
- //       }
- //  } else {
-  //      for (let index = 0; index < enteredDigit.length; index++) {
-   //         concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
-  //      }
- //   }
- //   return concatenatedNumber;
-//};
+ const handleConcatenation = (enteredDigits: number[]): number => {
+     let concatenatedNumber = 0;
+     let decimalPlace = decimal[0];
+     if (typeof decimalPlace === 'number') {
+         for (let index = decimalPlace; index < enteredDigits.length; index++) {
+             concatenatedNumber += enteredDigits[index] * Math.pow(10, enteredDigits.length - index - 1);
+         } 
+     } else {
+         for (let index = 0; index < enteredDigits.length; index++) {
+             concatenatedNumber += enteredDigits[index] * Math.pow(10, enteredDigits.length - index - 1);
+         }
+     }
+     return concatenatedNumber;
+ };
  
-const handleConcatenation = (enteredDigits: number[]): number => {
-    let concatenatedNumber = 0;
-    for (let index = 0; index < enteredDigits.length; index++) {
-        concatenatedNumber += enteredDigits[index] * Math.pow(10, enteredDigits.length - index - 1);
-    }
-    return concatenatedNumber;
-};
+
+
+ // Define decimalPlace outside the functions
+
+
+
 
 
 
@@ -161,7 +139,7 @@ const handlePercentageConversion =(event : Event) :void => {
     enteredDigits =[convertedPercentage]; 
     console.log(enteredDigits);
     if (outputEnteredDigits) {
-        outputEnteredDigits.textContent = enteredDigits.join(" ");
+        outputEnteredDigits.textContent = enteredDigits.join(" " );
     }
 };
 
@@ -169,10 +147,23 @@ if (percentButton) {
    percentButton.addEventListener('click', handlePercentageConversion); 
    };
 
-const handlePostoNegConversion = (event : Event) :void => {
-    let concatenatedNumber = handleConcatenation(enteredDigits);
-    let converted 
-} 
+   const handleDecimals = (event : Event) : void => {
+    decimal.push(enteredDigits.length);
+    console.log("It's a decimal! Digits before the decimal point: " + decimal);
+    if (outputEnteredDigits) {
+        outputEnteredDigits.textContent = enteredDigits.join(" ") + ".";
+    };
+}
+
+if (decButton) {
+   decButton.addEventListener("click", handleDecimals);
+};
+ 
+
+//const handlePostoNegConversion = (event : Event) :void => {
+ //   let concatenatedNumber = handleConcatenation(enteredDigits);
+ //   let converted 
+//} 
 
 const handleMultiplication = (event: Event): void => {
     let concatenatedNumber: number = handleConcatenation(enteredDigits); // Call handleConcatenation function
@@ -318,3 +309,29 @@ const handleDivision = (event: Event): void => {
   //      thisbutton.style.color = 'white'; // Change the text color of the button
   //  }
    // 
+
+    //array to combine numbers in calc and operators in calculation
+//let isADecimal = false;
+
+ 
+
+// handle user clicks an operation button + - X /
+//Concatenate digits 
+//move concatinated number t0 array numberInCalculation
+//push operator into operations in calculation depending on operator chosen
+//clear enteredDigit array
+//update output displays ; outputenteredDigits and outputcalculation in process
+
+
+//const handleConcatenation = (): number => {
+ //   let concatenatedNumber = 0;
+ //   if (isADecimal) {
+ //       for (let index = decimalPlace; index < enteredDigit.length; index++) {
+  //          concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
+ //       }
+ //  } else {
+  //      for (let index = 0; index < enteredDigit.length; index++) {
+   //         concatenatedNumber += enteredDigit[index] * Math.pow(10, enteredDigit.length - index - 1);
+  //      }
+ //   }
+ //   return concatenatedNumber
