@@ -4,10 +4,14 @@ it converts a number to %
 
 
 •	How users can get started with the project
-Explore the 3 arrays 
-EnteredDigits []
-numbersInCalculation {}
-operators[]
+
+Explore the 4 arrays;
+
+let enteredDigits: number[] = []; // Array to store entered digits
+let numberInCalculation: number[] = []; // array to store concatenated number in operation
+let operatorsInCalculation: string[] = []; //array to store operators in calcualtion
+let calculation: (number | string)[] = []; //array to store entirety of calculation
+
 These are logged to the console as calculation are performed
 
 
